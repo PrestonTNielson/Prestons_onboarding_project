@@ -21,6 +21,14 @@ target_include_directories(rviz_hallway_publisher
     include/rviz_hallway_publisher
     ${EIGEN3_INCLUDE_DIRS})
 ament_target_dependencies(rviz_hallway_publisher rclcpp visualization_msgs Eigen3 ament_index_cpp)
+
+add_executable(maze_waypoint_publisher src/maze_publisher.cpp)
+target_include_directories(maze_waypoint_publisher
+   PRIVATE
+    include/
+)
+ament_target_dependencies(maze_waypoint_publisher rclcpp std_msgs)
+
 install(
   TARGETS rviz_hallway_publisher
   DESTINATION lib/${PROJECT_NAME})
@@ -37,6 +45,9 @@ install(PROGRAMS
   scripts/walls_sensor.py
   DESTINATION lib/${PROJECT_NAME})
 
+install(TARGETS
+  TARGETS maze_waypoint_publisher
+  DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
