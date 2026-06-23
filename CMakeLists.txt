@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(roscopter_msgs REQUIRED)
 
 find_package(rclpy REQUIRED)
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
@@ -27,7 +28,7 @@ target_include_directories(maze_waypoint_publisher
    PRIVATE
     include/
 )
-ament_target_dependencies(maze_waypoint_publisher rclcpp std_msgs)
+ament_target_dependencies(maze_waypoint_publisher rclcpp std_msgs roscopter_msgs)
 
 install(
   TARGETS rviz_hallway_publisher
